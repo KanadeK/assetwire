@@ -1,0 +1,2 @@
+include README.zh-CN.md CONTRIBUTING.md SECURITY.md THIRD_PARTY.md CHANGELOG.md requirements-dev.txt
+recursive-include examples *.py *.js

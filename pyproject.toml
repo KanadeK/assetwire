@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "assetwire"
+version = "0.1.0"
+description = "Verify deployed static asset bytes and MIME types against a local build manifest"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{name = "KanadeK"}]
+dependencies = []
+classifiers = ["Programming Language :: Python :: 3", "Operating System :: OS Independent", "Environment :: Console", "Development Status :: 3 - Alpha"]
+
+[project.scripts]
+assetwire = "assetwire.cli:main"
+
+[project.urls]
+Repository = "https://github.com/KanadeK/assetwire"
+Issues = "https://github.com/KanadeK/assetwire/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "S"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101", "S603", "S607", "S310"]
+
+[tool.coverage.run]
+source = ["assetwire"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true

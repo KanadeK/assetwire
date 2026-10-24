@@ -1,0 +1,15 @@
+name: Bug report
+description: Report a reproducible problem using synthetic input
+body:
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Version, platform, command and minimal synthetic input
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Expected and actual result
+    validations:
+      required: true
