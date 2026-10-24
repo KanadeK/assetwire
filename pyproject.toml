@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "assetwire"
-version = "0.1.0"
+version = "0.1.1"
 description = "Verify deployed static asset bytes and MIME types against a local build manifest"
 readme = "README.md"
 requires-python = ">=3.11"

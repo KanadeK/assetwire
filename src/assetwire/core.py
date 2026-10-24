@@ -16,6 +16,8 @@ import zlib
 from pathlib import Path, PurePosixPath
 from urllib.parse import quote, urlsplit
 
+from . import __version__
+
 MAX_ASSET = 64 * 1024 * 1024
 MAX_MANIFEST = 2 * 1024 * 1024
 MAX_FILES = 1000
@@ -147,7 +149,7 @@ def load_manifest(path: Path) -> dict:
             ):
                 raise ValueError
         return data
-    except (ValueError, KeyError, TypeError) as exc:
+    except (ValueError, KeyError, TypeError, RecursionError) as exc:
         raise InputError("invalid schema-1 asset manifest") from exc
 
 
@@ -201,7 +203,7 @@ def probe(entry: dict, base: str, encoding: str, timeout: float) -> dict:
     opener = urllib.request.build_opener(urllib.request.ProxyHandler({}), NoRedirect())
     request = urllib.request.Request(  # noqa: S310 - check() validates the http(s) base before probing
         base + quote(entry["path"], safe="/"),
-        headers={"Accept-Encoding": encoding, "User-Agent": "assetwire/0.1.0"},
+        headers={"Accept-Encoding": encoding, "User-Agent": f"assetwire/{__version__}"},
         method="GET",
     )
     started = time.monotonic()

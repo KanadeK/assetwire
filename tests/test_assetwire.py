@@ -211,6 +211,7 @@ class AssetTests(unittest.TestCase):
             "{}",
             "[]",
             "{",
+            "[" * 2000 + "]" * 2000,
             json.dumps({**self.manifest, "schema": True}),
             json.dumps({"schema": 1, "files": self.manifest["files"] * 2}),
         ]:

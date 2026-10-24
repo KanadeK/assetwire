@@ -47,7 +47,7 @@ Existing manifest files are refused. Store or commit the reviewed manifest with 
 
 Exit `0`: every check passed. Exit `1`: a deployment/network/representation check failed. Exit `2`: local input, schema, limit or I/O error. `python -m assetwire` also works. JSON schema 1 reports `ok`, `files`, and per-request `checks` containing relative path, encoding, status, size/hash observations and issue codes. Results contain no response bodies or base URL. Text diagnostics escape asset names.
 
-## Deliberate limits in 0.1.0
+## Deliberate limits in 0.1.1
 
 - Selected public files only, no crawling or JS execution. This does not validate application behavior, stale service-worker clients, SRI tags, cache history, CORS, or all HTTP framing rules. Host-generated/minified content must match a deliberately chosen baseline.
 - Identity and gzip only. Brotli, stacked encodings, redirects and non-200 statuses fail. No redirects are followed, even within the same origin. Use the final deployment directory URL.
